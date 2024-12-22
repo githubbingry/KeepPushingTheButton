@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jackpot_counter/homepage.dart';
+import 'package:jackpot_counter/pages/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Keep Pushing the Button!',
       home: HomePage(),
+      // home: VersionOnePage(),
     );
   }
 }

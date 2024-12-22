@@ -5,14 +5,14 @@ import "package:flutter/material.dart";
 import "package:flutter_fortune_wheel/flutter_fortune_wheel.dart";
 import "package:jackpot_counter/reusable.dart";
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class VersionOnePage extends StatefulWidget {
+  const VersionOnePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<VersionOnePage> createState() => _VersionOnePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _VersionOnePageState extends State<VersionOnePage> {
   int counter = 0;
   int jackpotProb = 0;
   int outcome = 0;
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> texts() {
     return [
       const Text(
-        "Let's Go Gambling!!",
+        "Let's Go Gambling!! (ver.1)",
         style: TextStyle(
           color: Col.darkBlue,
           fontSize: 30,
@@ -337,8 +337,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  //MARK: alertAbout
-  void alertAbout() {
+  //MARK: alertAboutVer1
+  void alertAboutVer1() {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -375,8 +375,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  //MARK: buttonsRow1
-  List<Widget> buttonsRow1() {
+  //MARK: buttons
+  List<Widget> buttons() {
     return [
       Padding(
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 10),
@@ -458,27 +458,19 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-    ];
-  }
-
-  //TODO: Make a new button to navigate to another page that add [0.01, 0.05] instead
-
-  //MARK: buttonsRow2
-  List<Widget> buttonsRow2() {
-    return [
       Padding(
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 10),
         child: FloatingActionButton(
           onPressed: () {
             setState(() {
-              alertAbout();
+              alertAboutVer1();
             });
           },
-          tooltip: "Information about this page",
-          backgroundColor: Col.darkBlue,
-          child: const Icon(
+          tooltip: "About this page",
+          backgroundColor: spinning ? Col.disabledDarkBlue : Col.darkBlue,
+          child: Icon(
             Icons.question_mark,
-            color: Col.textWhite,
+            color: spinning ? Col.disabledTextWhite : Col.textWhite,
           ),
         ),
       ),
@@ -488,15 +480,8 @@ class _HomePageState extends State<HomePage> {
   //MARK: Widget build
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Col.darkBlue,
-        title: const Text(
-          "Keep Pushing the Button!",
-          style: TextStyle(color: Col.textWhite),
-        ),
-      ),
-      backgroundColor: Col.greyBlue,
+    return FormatPage(
+      selectedIndex: PageNum.ver1.index,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -515,13 +500,7 @@ class _HomePageState extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ...buttonsRow1(),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ...buttonsRow2(),
+                ...buttons(),
               ],
             ),
           ],
