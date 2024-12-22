@@ -14,9 +14,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int counter = 0;
-  int jackpotprob = 0;
+  int jackpotProb = 0;
   int outcome = 0;
   bool useWheel = true;
+  bool spinning = false;
   StreamController<int> controller = StreamController<int>.broadcast();
   List<FortuneItem> listFortuneItem = [];
 
@@ -31,8 +32,8 @@ class _HomePageState extends State<HomePage> {
   void _incrementJackpot() {
     setState(() {
       if (counter > 10 && counter % 2 != 0) {
-        if (jackpotprob == 0) {
-          jackpotprob = 1;
+        if (jackpotProb == 0) {
+          jackpotProb = 1;
         } else {
           // +0.01 s.d. 0.05
           /*
@@ -41,12 +42,12 @@ class _HomePageState extends State<HomePage> {
           */
 
           // scenario 1 : hanya {0.01, 0.02, 0.03, 0.04, 0.05}
-          // representasikan dalam bentuk jackpotprob/100 atau jackpotprob%
-          jackpotprob += (1 + Random().nextInt(5));
+          // representasikan dalam bentuk jackpotProb/100 atau jackpotProb%
+          jackpotProb += (1 + Random().nextInt(5));
         }
       }
-      if (jackpotprob >= 100) {
-        jackpotprob = 100;
+      if (jackpotProb >= 100) {
+        jackpotProb = 100;
       }
     });
   }
@@ -54,7 +55,7 @@ class _HomePageState extends State<HomePage> {
   void _reset() {
     setState(() {
       counter = 0;
-      jackpotprob = 0;
+      jackpotProb = 0;
     });
   }
 
@@ -91,7 +92,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       Text(
-        "$jackpotprob%",
+        "$jackpotProb%",
         style: const TextStyle(
           color: Col.darkBlue,
           fontSize: 16,
@@ -101,20 +102,19 @@ class _HomePageState extends State<HomePage> {
     ];
   }
 
-  //TODO: Make the + sign disable when its spinning then enable it when done
-
   //MARK: _spinTheWheel
   void _spinTheWheel() {
     setState(() {
+      spinning = !spinning;
       outcome = Random().nextInt(100);
       controller.add(outcome);
     });
   }
 
-  //MARK: winloseFortuneItems
-  List<FortuneItem> winloseFortuneItems() {
+  //MARK: winLoseFortuneItems
+  List<FortuneItem> winLoseFortuneItems() {
     listFortuneItem = [];
-    for (var i = 0; i < jackpotprob; i++) {
+    for (var i = 0; i < jackpotProb; i++) {
       listFortuneItem.add(
         FortuneItem(
           style: const FortuneItemStyle(
@@ -132,7 +132,7 @@ class _HomePageState extends State<HomePage> {
         ),
       );
     }
-    for (var i = 0; i < 100 - jackpotprob; i++) {
+    for (var i = 0; i < 100 - jackpotProb; i++) {
       listFortuneItem.add(
         FortuneItem(
           style: const FortuneItemStyle(
@@ -166,7 +166,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         content: Text(
-          "Congratulations, you got jackpot on $counter with the probability of $jackpotprob%! But are you really satisfied tho? Put it all on red now!",
+          "Congratulations, you got jackpot on $counter with the probability of $jackpotProb%! But are you really satisfied tho? Put it all on red now!",
           style: const TextStyle(
             color: Col.textWhite,
           ),
@@ -175,8 +175,11 @@ class _HomePageState extends State<HomePage> {
         actions: [
           ElevatedButton(
             onPressed: () {
-              Navigator.pop(context);
-              _reset();
+              setState(() {
+                spinning = !spinning;
+                Navigator.pop(context);
+                _reset();
+              });
             },
             style: const ButtonStyle(
               backgroundColor: WidgetStatePropertyAll<Color>(Col.greyBlue),
@@ -197,6 +200,7 @@ class _HomePageState extends State<HomePage> {
   void alertNotJackpot() {
     showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (context) => AlertDialog(
         title: const Text(
           "Oh Dang it..",
@@ -214,7 +218,10 @@ class _HomePageState extends State<HomePage> {
         actions: [
           ElevatedButton(
             onPressed: () {
-              Navigator.pop(context);
+              setState(() {
+                spinning = !spinning;
+                Navigator.pop(context);
+              });
             },
             style: const ButtonStyle(
               backgroundColor: WidgetStatePropertyAll<Color>(Col.greyBlue),
@@ -276,7 +283,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ],
       items: [
-        ...winloseFortuneItems(),
+        ...winLoseFortuneItems(),
       ],
       onFling: () {
         setState(() {
@@ -314,7 +321,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ],
       items: [
-        ...winloseFortuneItems(),
+        ...winLoseFortuneItems(),
       ],
       onFling: () {
         setState(() {
@@ -374,68 +381,80 @@ class _HomePageState extends State<HomePage> {
       Padding(
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 10),
         child: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              _reset();
-            });
-          },
+          onPressed: spinning
+              ? null
+              : () {
+                  setState(() {
+                    _reset();
+                  });
+                },
           tooltip: "Reset",
-          backgroundColor: Col.darkBlue,
-          child: const Icon(
+          backgroundColor: spinning ? Col.disabledDarkBlue : Col.darkBlue,
+          child: Icon(
             Icons.refresh_outlined,
-            color: Col.textWhite,
+            color: spinning ? Col.disabledTextWhite : Col.textWhite,
           ),
         ),
       ),
       Padding(
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 10),
         child: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              _incrementCounter();
-              if (counter > 10 && counter % 2 != 0) {
-                _incrementJackpot();
-                _spinTheWheel();
-              }
-            });
-          },
+          onPressed: spinning
+              ? null
+              : () {
+                  setState(() {
+                    _incrementCounter();
+                    if (counter > 10 && counter % 2 != 0) {
+                      _incrementJackpot();
+                      _spinTheWheel();
+                    }
+                  });
+                },
           tooltip: "Increment",
-          backgroundColor: Col.darkBlue,
-          child: const Icon(
+          backgroundColor: spinning ? Col.disabledDarkBlue : Col.darkBlue,
+          child: Icon(
             Icons.add,
-            color: Col.textWhite,
+            color: spinning ? Col.disabledTextWhite : Col.textWhite,
           ),
         ),
       ),
       Padding(
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 10),
         child: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              _spinTheWheel();
-            });
-          },
+          onPressed: spinning
+              ? null
+              : () {
+                  setState(() {
+                    _spinTheWheel();
+                  });
+                },
           tooltip: "Spin The Wheel",
-          backgroundColor: Col.darkBlue,
-          child: const Text(
+          backgroundColor: spinning ? Col.disabledDarkBlue : Col.darkBlue,
+          child: Text(
             "Spin",
-            style: TextStyle(color: Col.textWhite),
+            style: TextStyle(
+              color: spinning ? Col.disabledTextWhite : Col.textWhite,
+            ),
           ),
         ),
       ),
       Padding(
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 10),
         child: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              useWheel = !useWheel;
-            });
-          },
+          onPressed: spinning
+              ? null
+              : () {
+                  setState(() {
+                    useWheel = !useWheel;
+                  });
+                },
           tooltip: "Change The Wheel",
-          backgroundColor: Col.darkBlue,
-          child: const Text(
+          backgroundColor: spinning ? Col.disabledDarkBlue : Col.darkBlue,
+          child: Text(
             "Change",
-            style: TextStyle(color: Col.textWhite),
+            style: TextStyle(
+              color: spinning ? Col.disabledTextWhite : Col.textWhite,
+            ),
           ),
         ),
       ),
@@ -481,7 +500,7 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
             ...texts(),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 25, 0, 20),
