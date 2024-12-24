@@ -47,6 +47,7 @@ class _FormatPageState extends State<FormatPage> {
       ),
       backgroundColor: Col.greyBlue,
       body: Center(child: widget.body),
+      floatingActionButton: null,
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
@@ -121,28 +122,28 @@ class _FormatPageState extends State<FormatPage> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: Col.darkBlue,
         selectedFontSize: 14,
-        selectedIconTheme: const IconThemeData(size: 32),
+        selectedIconTheme: const IconThemeData(size: 30),
         selectedItemColor: Col.textWhite,
         unselectedItemColor: Col.greyBlue,
         currentIndex: widget.selectedIndex,
         onTap: (int index) {
           switch (index) {
             case 0: // home
-              Navigator.of(context).push(
+              Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => const HomePage(),
                 ),
               );
               break;
             case 1: // ver.1
-              Navigator.of(context).push(
+              Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => const VersionOnePage(),
                 ),
               );
               break;
             case 2: // ver.2
-              Navigator.of(context).push(
+              Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => const VersionTwoPage(),
                 ),

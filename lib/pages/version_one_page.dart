@@ -177,7 +177,7 @@ class _VersionOnePageState extends State<VersionOnePage> {
             onPressed: () {
               setState(() {
                 spinning = !spinning;
-                Navigator.pop(context);
+                Navigator.of(context).pop();
                 _reset();
               });
             },
@@ -220,7 +220,7 @@ class _VersionOnePageState extends State<VersionOnePage> {
             onPressed: () {
               setState(() {
                 spinning = !spinning;
-                Navigator.pop(context);
+                Navigator.of(context).pop();
               });
             },
             style: const ButtonStyle(
@@ -255,7 +255,7 @@ class _VersionOnePageState extends State<VersionOnePage> {
           actions: [
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.of(context).pop();
               },
               child: const Text(
                 "Beneri!",
@@ -358,7 +358,7 @@ class _VersionOnePageState extends State<VersionOnePage> {
         actions: [
           ElevatedButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.of(context).pop();
             },
             style: const ButtonStyle(
               backgroundColor: WidgetStatePropertyAll<Color>(Col.greyBlue),
@@ -381,6 +381,7 @@ class _VersionOnePageState extends State<VersionOnePage> {
       Padding(
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 10),
         child: FloatingActionButton(
+          heroTag: 0,
           onPressed: spinning
               ? null
               : () {
@@ -399,6 +400,7 @@ class _VersionOnePageState extends State<VersionOnePage> {
       Padding(
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 10),
         child: FloatingActionButton(
+          heroTag: 1,
           onPressed: spinning
               ? null
               : () {
@@ -421,6 +423,7 @@ class _VersionOnePageState extends State<VersionOnePage> {
       Padding(
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 10),
         child: FloatingActionButton(
+          heroTag: 2,
           onPressed: spinning
               ? null
               : () {
@@ -441,6 +444,7 @@ class _VersionOnePageState extends State<VersionOnePage> {
       Padding(
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 10),
         child: FloatingActionButton(
+          heroTag: 3,
           onPressed: spinning
               ? null
               : () {
@@ -461,6 +465,7 @@ class _VersionOnePageState extends State<VersionOnePage> {
       Padding(
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 10),
         child: FloatingActionButton(
+          heroTag: 4,
           onPressed: () {
             setState(() {
               alertAboutVer1();
