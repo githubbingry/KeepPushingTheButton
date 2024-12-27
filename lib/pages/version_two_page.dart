@@ -21,6 +21,8 @@ class _VersionTwoPageState extends State<VersionTwoPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Center(
+      child: Text("Version 2 Page"),
+    );
   }
 }

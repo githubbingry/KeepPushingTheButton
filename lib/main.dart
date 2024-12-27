@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jackpot_counter/reusable.dart';
+import 'package:jackpot_counter/format_page.dart';
 
 void main() {
   runApp(const MyApp());
