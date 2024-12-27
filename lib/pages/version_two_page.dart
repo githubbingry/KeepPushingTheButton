@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:jackpot_counter/reusable.dart';
 
 class VersionTwoPage extends StatefulWidget {
   const VersionTwoPage({super.key});
@@ -22,9 +21,6 @@ class _VersionTwoPageState extends State<VersionTwoPage> {
 
   @override
   Widget build(BuildContext context) {
-    return FormatPage(
-      selectedIndex: PageNum.ver2.index,
-      body: const Placeholder(),
-    );
+    return const Placeholder();
   }
 }

@@ -485,31 +485,28 @@ class _VersionOnePageState extends State<VersionOnePage> {
   //MARK: Widget build
   @override
   Widget build(BuildContext context) {
-    return FormatPage(
-      selectedIndex: PageNum.ver1.index,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ...texts(),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 25, 0, 20),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: useWheel
-                    ? MediaQuery.of(context).size.width * 0.8
-                    : MediaQuery.of(context).size.width * 0.2,
-                child: useWheel ? wheel() : fortuneBar(),
-              ),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ...texts(),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 25, 0, 20),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: useWheel
+                  ? MediaQuery.of(context).size.width * 0.8
+                  : MediaQuery.of(context).size.width * 0.2,
+              child: useWheel ? wheel() : fortuneBar(),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ...buttons(),
-              ],
-            ),
-          ],
-        ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ...buttons(),
+            ],
+          ),
+        ],
       ),
     );
   }

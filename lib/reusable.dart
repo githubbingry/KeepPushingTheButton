@@ -21,20 +21,21 @@ enum PageNum {
 }
 
 class FormatPage extends StatefulWidget {
-  const FormatPage({
-    super.key,
-    required this.selectedIndex,
-    required this.body,
-  });
-
-  final int selectedIndex;
-  final Widget body;
+  const FormatPage({super.key});
 
   @override
   State<StatefulWidget> createState() => _FormatPageState();
 }
 
 class _FormatPageState extends State<FormatPage> {
+  int _selectedIndex = 0;
+  final List<Widget> _pages = [
+    const HomePage(),
+    const VersionOnePage(),
+    const VersionTwoPage(),
+    const VersionTwoPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +47,7 @@ class _FormatPageState extends State<FormatPage> {
         ),
       ),
       backgroundColor: Col.greyBlue,
-      body: Center(child: widget.body),
+      body: _pages[_selectedIndex],
       floatingActionButton: null,
       bottomNavigationBar: BottomNavigationBar(
         items: [
@@ -125,33 +126,11 @@ class _FormatPageState extends State<FormatPage> {
         selectedIconTheme: const IconThemeData(size: 30),
         selectedItemColor: Col.textWhite,
         unselectedItemColor: Col.greyBlue,
-        currentIndex: widget.selectedIndex,
+        currentIndex: _selectedIndex,
         onTap: (int index) {
-          switch (index) {
-            case 0: // home
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const HomePage(),
-                ),
-              );
-              break;
-            case 1: // ver.1
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const VersionOnePage(),
-                ),
-              );
-              break;
-            case 2: // ver.2
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const VersionTwoPage(),
-                ),
-              );
-              break;
-            case 3: // about this app
-              break;
-          }
+          setState(() {
+            _selectedIndex = index;
+          });
         },
       ),
     );
