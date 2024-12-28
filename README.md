@@ -34,6 +34,7 @@ Here you can see 2 different version that I make :
 ## Downloads
 
 Download the latest version of KeepPushingTheButton according to your Android device's architecture type:
-- [Arm64-v8a](https://https://github.com/githubbingry/KeepPushingTheButton/releases/download/v0.0.3/app-arm64-v8a-release.apk) (APK for arm64-v8a)
-- [Armeabi-v7a](https://https://github.com/githubbingry/KeepPushingTheButton/releases/download/v0.0.3/app-armeabi-v7a-release.apk) (APK for armeabi-v7a or arm32)
-- [x86_64](https://https://github.com/githubbingry/KeepPushingTheButton/releases/download/v0.0.3/app-x86_64-release.apk) (APK for x86_64)
+- [Fat Apk](https://https://github.com/githubbingry/KeepPushingTheButton/releases/download/v0.1/KeepPushingTheButton-release.apk) (Fat APK, if you don't know your Android architecture)
+- [Arm64-v8a](https://https://github.com/githubbingry/KeepPushingTheButton/releases/download/v0.1/KeepPushingTheButton-arm64-v8a-release.apk) (APK for arm64-v8a)
+- [Armeabi-v7a](https://https://github.com/githubbingry/KeepPushingTheButton/releases/download/v0.1/KeepPushingTheButton-armeabi-v7a-release.apk) (APK for armeabi-v7a or arm32)
+- [x86_64](https://https://github.com/githubbingry/KeepPushingTheButton/releases/download/v0.1/KeepPushingTheButton-x86_64-release.apk) (APK for x86_64)
