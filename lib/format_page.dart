@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jackpot_counter/pages/about_page.dart';
 import 'package:jackpot_counter/pages/home_page.dart';
 import 'package:jackpot_counter/pages/version_one_page.dart';
 import 'package:jackpot_counter/pages/version_two_page.dart';
@@ -18,7 +17,6 @@ class _FormatPageState extends State<FormatPage> {
     const HomePage(),
     const VersionOnePage(),
     const VersionTwoPage(),
-    const AboutPage(),
   ];
 
   @override
@@ -89,24 +87,6 @@ class _FormatPageState extends State<FormatPage> {
               ),
             ),
             label: 'Ver.2',
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(
-              Icons.question_mark,
-              color: Col.disabledTextWhite,
-            ),
-            activeIcon: Container(
-              padding: const EdgeInsets.all(3),
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Col.textWhite,
-              ),
-              child: const Icon(
-                Icons.question_mark,
-                color: Col.darkBlue,
-              ),
-            ),
-            label: 'About',
           ),
         ],
         type: BottomNavigationBarType.fixed,

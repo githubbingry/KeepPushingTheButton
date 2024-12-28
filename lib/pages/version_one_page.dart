@@ -166,7 +166,7 @@ class _VersionOnePageState extends State<VersionOnePage> {
           ),
         ),
         content: Text(
-          "Congratulations, you got jackpot on $counter with the probability of $jackpotProb%! But are you really satisfied tho? Put it all on red now!",
+          "Selamat! Anda 'Jackpot' pada angka $counter, dengan probabilitas jackpot $jackpotProb%! But are you really satisfied tho? Put it all on red now!",
           style: const TextStyle(
             color: Col.textWhite,
           ),
@@ -349,7 +349,7 @@ class _VersionOnePageState extends State<VersionOnePage> {
           ),
         ),
         content: const Text(
-          "This is the one with the jackpot probability that get added by {0.01, 0.02, 0.03, 0.04, 0.05}",
+          "The jackpot probability get added randomly in the set of {0.01, 0.02, 0.03, 0.04, 0.05}. How this works is you need to land on the green, which has {jackpot probability} of them from 100 fortune items.",
           style: TextStyle(
             color: Col.textWhite,
           ),
