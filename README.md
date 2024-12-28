@@ -13,22 +13,22 @@ Here you can see 2 different version that I make :
 
 ### Home Page
 <div style="display:flex;">
-   <img src="https://github.com/mfazrinizar/KeepPushingTheButton/blob/main/UI_Overview/homepage.png" alt="homepage" width="200"/>
+   <img src="https://github.com/githubbingry/KeepPushingTheButton/blob/main/UI_Overview/homepage.png" alt="homepage" width="200"/>
 </div>
 
 ### Version 1 Page
 <div style="display:flex;">
-   <img src="https://github.com/mfazrinizar/KeepPushingTheButton/blob/main/UI_Overview/ver1.png" alt="ver1" width="200"/>
-   <img src="https://github.com/mfazrinizar/KeepPushingTheButton/blob/main/UI_Overview/ver1_bar.png" alt="ver1_bar" width="200"/>
-   <img src="https://github.com/mfazrinizar/KeepPushingTheButton/blob/main/UI_Overview/ver1_fail.png" alt="ver1_fail" width="200"/>
-   <img src="https://github.com/mfazrinizar/KeepPushingTheButton/blob/main/UI_Overview/ver1_jackpot.png" alt="ver1_jackpot" width="200"/>
+   <img src="https://github.com/githubbingry/KeepPushingTheButton/blob/main/UI_Overview/ver1.png" alt="ver1" width="200"/>
+   <img src="https://github.com/githubbingry/KeepPushingTheButton/blob/main/UI_Overview/ver1_bar.png" alt="ver1_bar" width="200"/>
+   <img src="https://github.com/githubbingry/KeepPushingTheButton/blob/main/UI_Overview/ver1_fail.png" alt="ver1_fail" width="200"/>
+   <img src="https://github.com/githubbingry/KeepPushingTheButton/blob/main/UI_Overview/ver1_jackpot.png" alt="ver1_jackpot" width="200"/>
 </div>
 
 ### Version 2 Page
 <div style="display:flex;">
-   <img src="https://github.com/mfazrinizar/KeepPushingTheButton/blob/main/UI_Overview/ver2.png" alt="ver2" width="200"/>
-   <img src="https://github.com/mfazrinizar/KeepPushingTheButton/blob/main/UI_Overview/ver2_fail.png" alt="ver2_fail" width="200"/>
-   <img src="https://github.com/mfazrinizar/KeepPushingTheButton/blob/main/UI_Overview/ver2_jackpot.png" alt="ver2_jackpot" width="200"/>
+   <img src="https://github.com/githubbingry/KeepPushingTheButton/blob/main/UI_Overview/ver2.png" alt="ver2" width="200"/>
+   <img src="https://github.com/githubbingry/KeepPushingTheButton/blob/main/UI_Overview/ver2_fail.png" alt="ver2_fail" width="200"/>
+   <img src="https://github.com/githubbingry/KeepPushingTheButton/blob/main/UI_Overview/ver2_jackpot.png" alt="ver2_jackpot" width="200"/>
 </div>
 
 ## Downloads
