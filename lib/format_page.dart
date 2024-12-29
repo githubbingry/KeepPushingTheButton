@@ -19,6 +19,20 @@ class _FormatPageState extends State<FormatPage> {
     const VersionTwoPage(),
   ];
 
+  Widget activeIcon(IconData icon) {
+    return Container(
+      padding: const EdgeInsets.all(3),
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        color: Col.textWhite,
+      ),
+      child: Icon(
+        icon,
+        color: Col.darkBlue,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,17 +53,7 @@ class _FormatPageState extends State<FormatPage> {
               Icons.home,
               color: Col.greyBlue,
             ),
-            activeIcon: Container(
-              padding: const EdgeInsets.all(3),
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Col.textWhite,
-              ),
-              child: const Icon(
-                Icons.home,
-                color: Col.darkBlue,
-              ),
-            ),
+            activeIcon: activeIcon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
@@ -57,17 +61,7 @@ class _FormatPageState extends State<FormatPage> {
               Icons.navigate_before,
               color: Col.greyBlue,
             ),
-            activeIcon: Container(
-              padding: const EdgeInsets.all(3),
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Col.textWhite,
-              ),
-              child: const Icon(
-                Icons.navigate_before,
-                color: Col.darkBlue,
-              ),
-            ),
+            activeIcon: activeIcon(Icons.navigate_before),
             label: 'Ver.1',
           ),
           BottomNavigationBarItem(
@@ -75,17 +69,7 @@ class _FormatPageState extends State<FormatPage> {
               Icons.navigate_next,
               color: Col.greyBlue,
             ),
-            activeIcon: Container(
-              padding: const EdgeInsets.all(3),
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Col.textWhite,
-              ),
-              child: const Icon(
-                Icons.navigate_next,
-                color: Col.darkBlue,
-              ),
-            ),
+            activeIcon: activeIcon(Icons.navigate_next),
             label: 'Ver.2',
           ),
         ],
